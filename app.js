@@ -1,29 +1,28 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import homeR from './src/routes/homeR';
 
+dotenv.config();
+
 // Iniciando o app
 class App {
-  constructor(){
+  constructor() {
     this.app = express();
     this.middlewares();
     this.routes();
   }
 
   // Metódo para os middlewares
-  middlewares(){
+  middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
   }
 
   // Metódo para as routes
-  routes(){
+  routes() {
     this.app.use('/', homeR);
   }
 
 }
 
 export default new App().app;
-
-
-
-
